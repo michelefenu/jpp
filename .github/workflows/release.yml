@@ -18,6 +18,9 @@ jobs:
           - os: macos-13
             name: jpp-macos-x86_64
             cc: clang
+          - os: ubuntu-latest
+            name: jpp-linux-x86_64
+            cc: gcc
           - os: windows-latest
             name: jpp-windows-x86_64.exe
             cc: gcc
