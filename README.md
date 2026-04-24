@@ -13,39 +13,55 @@ A minimal, dependency-free JSON pretty printer for the terminal. Written in **C9
 
 ## Building
 
+```bash
 make
+```
 
 Or manually:
 
+```bash
 gcc -std=c99 -O2 -Wall -Wextra -pedantic -o jpp jpp.c
+```
 
 ## Installing
 
+```bash
 sudo make install
+```
 
 This installs `jpp` to `/usr/local/bin`. To change the location:
 
+```bash
 make install PREFIX=/opt
+```
 
 ## Uninstalling
 
+```bash
 sudo make uninstall
+```
 
 ## Usage
 
 **Pipe from stdin:**
 
+```bash
 cat data.json | jpp
 curl -s https://api.example.com | jpp
 echo '{"a":1,"b":[2,3]}' | jpp
+```
 
 **Pass a file directly:**
 
+```bash
 jpp data.json
+```
 
 **Write formatted output to a file (color auto-disabled):**
 
+```bash
 jpp data.json > pretty.json
+```
 
 ## Options
 
@@ -60,10 +76,13 @@ jpp data.json > pretty.json
 
 **Input:**
 
+```json
 {"name":"jpp","version":1,"tags":["json","pretty","c99"],"fast":true}
+```
 
 **Output (`jpp -t 2`):**
 
+```json
 {
   "name": "jpp",
   "version": 1,
@@ -74,24 +93,31 @@ jpp data.json > pretty.json
   ],
   "fast": true
 }
+```
 
 **With 4-space indent:**
 
+```bash
 jpp -t 4 data.json
+```
 
 **Force no color for copying into docs:**
 
+```bash
 jpp -C < data.json
+```
 
 ## Error Handling
 
 `jpp` reports errors with line and column numbers:
 
+```
 $ echo '{"a": }' | jpp
 jpp: error at line 1, col 7: unexpected character
 
 $ echo '{"a": "hello' | jpp
 jpp: error at line 1, col 13: unterminated string
+```
 
 ## License
 
